@@ -1,0 +1,96 @@
+
+  for (int i = 0; i < 8; i++)   //Rests the movingGrid
+  {
+    MovingGameGrid[i] = gameGrid[i];
+  }
+
+  for (unsigned char i = 0; i < 8; i++)     //Displays the moving grid by default 
+  {
+    Matrix_write(MAX7219_REG_DIGIT0 + i, MovingGameGrid[i]);
+  }
+
+  for (unsigned char i = 0; i < 8; i++)
+  {
+    MovingGameGrid[i] = (MovingGameGrid[i] >> 1) | 0b10000000; // Shift right once and set far left bit
+    Matrix_write(MAX7219_REG_DIGIT0 + i, MovingGameGrid[i]);
+  }
+  for (unsigned char i = 0; i < 8; i++)
+  {
+    MovingGameGrid[i] = (MovingGameGrid[i] << 1) | 0b00000001; // Shift Left once and set far left bit
+    Matrix_write(MAX7219_REG_DIGIT0 + i, MovingGameGrid[i]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // DDRB = 0x00;
+  // TCCR0A |= (1 << COM0A1);               // use Channel A
+  // TCCR0A |= (1 << WGM01) | (1 << WGM00); // set fast PWM Mode
+
+  // tasks[0].period = Buzzer_Period;
+  // tasks[0].state = sm_BuzzIdle;
+  // tasks[0].elapsedTime = 0;
+  // tasks[0].TickFct = Buzzer_Tick;
+
+
+  
+int Buzzer_Tick(int Buzzer_state)
+{
+  serial_println(ADC_read(0));
+  // serial_println(ADC_read(1));
+
+  switch (Buzzer_state)
+  {
+  case sm_BuzzIdle:
+    // serial_println(ADC_read(0));
+    // serial_println(ADC_read(1));
+
+    if (ADC_read(0) >= 100 || ADC_read(1) >= 100)
+    {
+      Buzzer_state = sm_BuzzOn;
+    }
+    break;
+
+  case sm_BuzzOn:
+    if (ADC_read(0) <= 100 || ADC_read(1) <= 100)
+    {
+      Buzzer_state = sm_BuzzIdle;
+    }
+    break;
+  }
+
+  // ACTIONSSSSSSSSSS
+  switch (Buzzer_state)
+  {
+  case sm_BuzzIdle:
+    OCR0A = 255; // sets duty cycle to 50% since TOP is always 256
+    break;
+  case sm_BuzzOn:
+    OCR0A = 64;                      // sets duty cycle to 50% since TOP is always 256
+    TCCR0B = (TCCR0B & 0xF8) | 0x04; // set prescaler to 256
+    break;
+  }
+  return Buzzer_state;
+}
+
+
+
+
+
+
+
+
+
+
