@@ -1,0 +1,51 @@
+﻿LINK TO DEMO: https://www.youtube.com/watch?v=BTBfimVJBIA&t=1s&ab_channel=luismagallanes
+        Time Stamps:  1 Buildupon : 0:00
+                        Functionality : 0:06
+                        2 Buildupon : 0: 20
+                        Functionality : 0: 25
+                        The rest of the components/ Functionality : 0: 30
+                        
+
+
+Project Overview
+   1. This is a car game. The game is displayed on a 8x8 LED grid. To start the game press the start button as indicated on the blue screen. Once you start the game you’ll see the game display change and start the game. As the game starts there will be music playing to also let you know that the game has started.The single light that’s on in the middle is your car(you the player) and columns of turned on LEDs are walls. You,the player must stay on the race track (Turned off part of the 8x8 grid). The walls will be shifting left and right, to move the car you have to move the joystick right and left to avoid hitting the wall. For every second you stay alive your score increases. If your current score is higher than the highscore, the high score will change accordingly and save so you know what to aim for and beat each time you play. Both the score and highscore will be displayed on the blue screen. If you hit a wall you die and the game ends. The blue screen will tell you the score you got for that round and a gameover message. The game display will turn on all its light and the music will stop and play a single sound to let you know that you have died. If you want to restart the game you have to click on the restart button that is next to the start button. Everything will reset minus your high score and you’ll be able to play again. IF you manage to reach 120 points(2mins) alive the game will speed up. 
+________________
+
+
+UI and I/O specs
+   2. Outputs
+      1. 8x8 LED Matrix
+         1. This component will allow the user to see a start screen indicating the game hasn’t started. Once it has started it will display the car and shift the walls. It will also show the user which path is correct to stay alive. Also it displays when the user has died and the game has ended for that round. 
+         2. Passive Buzzer
+            1. This will play in game music while the player is playing the game and is alive. Once the user dies the buzzer will play a sound to indicate the user that the game because they died. 
+         3. LCD Display
+            1. This gives the user the ability to see their live score for that round and the highest score of all time. Once they die the display will show that rounds score and a game over message. 
+   3. Inputs
+      1. Joystick
+         1. This component will allow the user to move left and right to avoid hitting the shifting walls. 
+      2. Start Button
+         1. This component will allow the user to start the game once the button is pressed for 1 period(tick).
+      3. Restart Button
+         1. This Button will allow the user to reset everything to its starting state to be able to play the game continuously.  
+________________
+BuildUpons
+   1. The first BuildUpon is an 8x8 LED Matrix. The way it works is that you need to first connect the proper pins to the microprocessor and create a 2D array that will display/reflect onto the 8x8 LED matrix. For the game sake the walls are being shifted by a function that shifts each bit of each row by 1 to the left until it reaches it’s respected threshold. The car is similar but instead of shifting everything it shifts that one bit that represents a car on a separate 2d array. Both arrays are displayed at the same time so the game can have a real time display. 
+   2. The second Build Upon is a Passive Buzzer. The way it works is the buzzer component is configured to Timer1 for generating PWM signals to control the buzzer's frequency. The Timer1 is set to Fast PWM mode with ICR1 as the top value, which determines the frequency of the PWM signal. The OCR1A register sets the duty cycle, allowing for the generation of different tones by changing the frequency index based on predefined values. So if you have an array of note frequencies you solve for Top and then assign it to ICR1 and then divide that by 2 and assign it to OCR1A.
+   3. The 3rd buildupon was supposed to be a shift register but because of the specific led matrix component that I bought it didn’t require a shift register to connect multiple displays at once. Thus there was no point in using it. 
+   4. ________________
+
+
+Challenges
+One main challenge that I had was ensuring the correct synchronization between the tasks, particularly the joystick input and car position update, to avoid any lag or delay. Debugging the collision detection algorithm was also difficult as it required precise alignment of the LED matrix grids. I over came it by taking it step by step. 
+
+
+
+
+EXTRAS
+more complex obstacles for increased difficulty.
+An interactive menu system for selecting difficulty levels and viewing high scores.
+Better sound effects and background music
+
+
+I really loved working on this. I learned so much about how software and hardware talk to each other at the bit level. 
+________________
