@@ -8,7 +8,16 @@
 
 
 Project Overview
-   1. This is a car game. The game is displayed on a 8x8 LED grid. To start the game press the start button as indicated on the blue screen. Once you start the game you’ll see the game display change and start the game. As the game starts there will be music playing to also let you know that the game has started.The single light that’s on in the middle is your car(you the player) and columns of turned on LEDs are walls. You,the player must stay on the race track (Turned off part of the 8x8 grid). The walls will be shifting left and right, to move the car you have to move the joystick right and left to avoid hitting the wall. For every second you stay alive your score increases. If your current score is higher than the highscore, the high score will change accordingly and save so you know what to aim for and beat each time you play. Both the score and highscore will be displayed on the blue screen. If you hit a wall you die and the game ends. The blue screen will tell you the score you got for that round and a gameover message. The game display will turn on all its light and the music will stop and play a single sound to let you know that you have died. If you want to restart the game you have to click on the restart button that is next to the start button. Everything will reset minus your high score and you’ll be able to play again. IF you manage to reach 120 points(2mins) alive the game will speed up. 
+1. This is a car game. The game is displayed on a 8x8 LED grid. To start the game press the start button as indicated on the blue screen. Once you start the game you’ll see the game display change and start the game. 
+As the game starts there will be music playing to also let you know that the game has started.The single light that’s on in the middle is your car(you the player) and columns of turned on LEDs are walls. You,the player must stay on the race track (Turned off part of the 8x8 grid). 
+The walls will be shifting left and right, to move the car you have to move the joystick right and left to avoid hitting the wall. 
+For every second you stay alive your score increases. 
+If your current score is higher than the highscore, the high score will change accordingly and save so you know what to aim for and beat each time you play.
+Both the score and highscore will be displayed on the blue screen. 
+If you hit a wall you die and the game ends. The blue screen will tell you the score you got for that round and a gameover message. 
+The game display will turn on all its light and the music will stop and play a single sound to let you know that you have died. 
+If you want to restart the game you have to click on the restart button that is next to the start button. Everything will reset minus your high score and you’ll be able to play again. 
+IF you manage to reach 120 points(2mins) alive the game will speed up. 
 ________________
 
 
